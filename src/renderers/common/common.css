@@ -1,0 +1,83 @@
+/* TODO: Figure out if I can remove the spacer class by using flex for those elements instead */
+
+/* Make the text unselectable */
+button,
+select {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+/* Make the text unselectable */
+.unselectable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+/* The style class for a scroll view */
+.scroll {
+  /* height: 50%; */
+  /* width: 18%; */
+  /* overflow: hidden; */
+  white-space: nowrap;
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* The style class to inherit height from the element's parent */
+.inherit-height {
+  height: inherit;
+}
+
+/* The style class to remove line spacing */
+.no-line-spacing {
+  margin-block: 0px;
+}
+
+/* The style class to keep items in a row */
+.horizontal-stack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The style class to keep items in a column */
+.vertical-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* The style for the spacer element shown in the menu bar */
+#spacer {
+  width: 37px;
+}
+
+/* The style class for buttons that add new items */
+.text-img-btn {
+  width: fit-content;
+  padding-right: 12px;
+  align-items: center;
+}
+
+/* The style class for the svg of buttons with text and an image */
+.text-img-btn svg {
+  padding-right: 4px;
+}
+
+.none {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.inline-flex {
+  display: inline-flex;
+}

@@ -1,0 +1,29 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "build",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "pnpm: build",
+			"detail": "Fully builds the program from source"
+		},
+		{
+			"type": "npm",
+			"script": "build-quick",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "pnpm: build-quick",
+			"detail": "Builds the program quickly from source by skipping some long tasks"
+		},
+		{
+			"type": "npm",
+			"script": "build-copy",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "pnpm: build-copy",
+			"detail": "Copies the files that don't need to be built first"
+		}
+	]
+}

@@ -1,0 +1,78 @@
+/* The style for the entire page (all titles, headers, bodies, etc.) */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  margin-top: auto;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: auto;
+  padding: 2rem;
+}
+
+/* The style class to center headers */
+.center-header {
+  display: flex;
+  justify-content: center;
+}
+
+/* The style class for the ui buttons */
+.ui-button {
+  border: none;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: #0096d5;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  /* margin: 0px 10px; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  width: 150px;
+}
+
+.ui-button svg {
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.ui-button span {
+  text-align: start;
+}
+
+/* The style class for when the buttons are hovered over */
+.ui-button:hover {
+  background-color: #47bbed;
+  transform: scale(1.05);
+}
+
+/* The style class for the checkbox elements */
+.checkbox-elements {
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* The style class to keep items in a row */
+.horizontal-stack {
+  min-width: 425px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* The style class to add button padding (margin) */
+.pad-bottom {
+  margin-bottom: 10px;
+}
+
+/* The style class for disabled buttons */
+.disabled-button {
+  background-color: grey;
+  color: rgb(205, 205, 205);
+  cursor: default;
+}
+
+/* The style class for when the disabled buttons are hovered over */
+.disabled-button:hover {
+  background-color: grey;
+  transform: none;
+}

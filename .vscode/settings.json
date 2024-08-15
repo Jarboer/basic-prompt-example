@@ -1,0 +1,12 @@
+{
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "cSpell.words": [
+        "cachestorage",
+        "indexdb",
+        "keytar",
+        "localstorage",
+        "serviceworkers",
+        "shadercache",
+        "websql"
+    ]
+}
