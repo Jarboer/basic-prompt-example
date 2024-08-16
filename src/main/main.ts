@@ -4,6 +4,8 @@
  * To run the app enter the command: pnpm start
  */
 
+// TODO: Remove @electron/remote as a dependency? As it is from my prompt library
+
 // Modules to control application life and create native browser window
 import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
@@ -98,7 +100,7 @@ ipcMain.on('login-btn-clicked', async (event, arg) => {
   } else {
     console.log('No credentials returned');
   }
-
+  
   // Do something with the creds...
 });
 

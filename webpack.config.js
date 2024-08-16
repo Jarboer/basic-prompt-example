@@ -4,6 +4,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); 
 // const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin');
 
 module.exports = [
@@ -23,7 +24,6 @@ module.exports = [
       // Add more entries as needed
     },
     output: {
-      clean: true,
       pathinfo: true, // For debugging
     },
     resolve: {
@@ -38,6 +38,11 @@ module.exports = [
         },
       ],
     },
+    plugins: [
+      new CleanWebpackPlugin({
+        cleanOnceBeforeBuildPatterns: ['main/*'], // Only clean the main section
+      }),
+    ],
   },
   // Web
   {
@@ -104,6 +109,9 @@ module.exports = [
           }
           // Add more patterns as needed
         ],
+      }),
+      new CleanWebpackPlugin({
+        cleanOnceBeforeBuildPatterns: ['renderers/*'], // Only clean the renderers section
       }),
     ],
   },

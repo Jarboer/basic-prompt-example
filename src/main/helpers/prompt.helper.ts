@@ -1,7 +1,8 @@
 import { BrowserWindow } from 'electron';
 
 // Import the required modules
-const prompt = require('@jarboer/electron-prompt');
+// TODO: Change to dependency
+const prompt = require('C://Users/jboersen/Developer/Node.js/electron-prompt'); // require('@jarboer/electron-prompt')
 
 /**
  * Used to define an input element's type
