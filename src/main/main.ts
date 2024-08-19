@@ -11,8 +11,9 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 
 // Import the helper modules
-import { betterPrompt, getLoginCredentials } from './helpers/prompt.helper';
 import NullTypeError from '../errors/null-type-error';
+// TODO: Change to dependency
+import { betterPrompt } from 'C://Users/jboersen/Developer/Node.js/electron-prompt'; // require('@jarboer/electron-prompt')
 
 /**
  * Used to store the mainWindow object
@@ -136,6 +137,53 @@ ipcMain.on('select-style-btn-clicked', async (event, arg) => {
 });
 
 /* ------------------- End of handlers for main-menu ------------------- */
+
+/**
+ * This method is used to get the login credentials from the user
+ *
+ * @returns The user's credentials
+ */
+export async function getLoginCredentials() {
+  /**
+   * Used to store the result of the user's inputs for credentials
+   */
+  let result = {
+    username: '',
+    password: '',
+  };
+
+  // Prompt for the user's username
+  const username = await betterPrompt({
+    title: 'Add Credentials',
+    label: 'Please enter your username',
+    placeholder: 'Username',
+    resizable: true, // TODO: Remove?? For testing
+    devMode: true, // TODO: Remove?? For testing
+    inputAttrs: {
+      type: 'text',
+      required: true,
+    },
+  });
+
+  // Prompt for the user's password
+  const password = await betterPrompt({
+    title: 'Add Credentials',
+    label: 'Please enter your password',
+    placeholder: 'Password',
+    resizable: true, // TODO: Remove?? For testing
+    devMode: true, // TODO: Remove?? For testing
+    inputAttrs: {
+      type: 'password',
+      required: true,
+    },
+  });
+
+  // Store the credentials in the result and convert the null vals to ""
+  result.username = username ?? '';
+  result.password = password ?? '';
+
+  return result;
+}
 
 /**
  * This method is used to check if the window is null
