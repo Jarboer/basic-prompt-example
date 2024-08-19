@@ -11,7 +11,7 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 
 // Import the helper modules
-import { getLoginCredentials } from './helpers/prompt.helper';
+import { betterPrompt, getLoginCredentials } from './helpers/prompt.helper';
 import NullTypeError from '../errors/null-type-error';
 
 /**
@@ -34,9 +34,8 @@ const createMainWindow = () => {
     icon: path.join(__dirname, '../../resources/icons/appIcon.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'), // Call the preload script
-      // TODO: Do I need node integration enabled?
       // nodeIntegration: true, // Enable Node.js integration in the renderer process
-      devTools: true, // Disable chrome dev tools for the main window // FIXME: Disable for final exe
+      devTools: true, // Disable chrome dev tools for the main window // FIXME: Disable??
     },
   });
 
@@ -85,9 +84,8 @@ app.on('activate', () => {
 
 /* ------------------- Handlers for main-menu ------------------- */
 
-// This event is called when the plex button is clicked
+// This event is called when the login button is clicked
 ipcMain.on('login-btn-clicked', async (event, arg) => {
-  // NOTE: Can remove event, arg
   console.log('Login button pressed');
 
   // Get the credentials from the user
@@ -102,6 +100,39 @@ ipcMain.on('login-btn-clicked', async (event, arg) => {
   }
   
   // Do something with the creds...
+});
+
+// This event is called when the select style button is clicked
+ipcMain.on('select-style-btn-clicked', async (event, arg) => {
+  console.log('Select Style button pressed');
+
+  // Prompt with a select element, make it a modal by passing in the window ref
+  const result = await betterPrompt({
+    title: 'Select an Option',
+    label: 'Please select an option',
+    type: 'select',
+    resizable: true, // TODO: Remove?? For testing
+    devMode: true, // TODO: Remove?? For testing
+    selectOptions: {
+      '1': 'Option 1',
+      '2': 'Option 2',
+      '3': 'Option 3',
+      '4': 'Option 4',
+      '5': 'Option 5',
+      '6': 'Option 6',
+      '7': 'Option 7',
+      '8': 'Option 8',
+      '9': 'Option 9',
+      '10': 'Option 10'
+    }
+  }, isWindowNull(mainWindow));
+  
+  // Do something with the result...
+
+  // Display the result if it isn't null
+  if (result) {
+    console.log("Result:", result);
+  }
 });
 
 /* ------------------- End of handlers for main-menu ------------------- */

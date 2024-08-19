@@ -74,7 +74,7 @@ declare global {
    * Define the allowed buttons (related to main window) for the elementName property of addClickListener() on window.electron
    */
   // prettier-ignore
-  export type MainWindowButtons = 'login-btn';
+  export type MainWindowButtons = 'login-btn' | 'select-style-btn';
 }
 
 export {};

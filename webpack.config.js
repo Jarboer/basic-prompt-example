@@ -102,7 +102,6 @@ module.exports = [
       // Add more HtmlWebpackPlugin instances as needed
       new CopyWebpackPlugin({
         patterns: [
-          { from: 'src/renderers/common', to: 'renderers/common' },
           {
             from: 'src/renderers/main-menu/main-menu.css',
             to: 'renderers/main-menu',
