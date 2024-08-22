@@ -9,12 +9,9 @@ importers:
   .:
     dependencies:
       '@jarboer/electron-prompt':
-        specifier: ^1.8.0
-        version: 1.8.0
+        specifier: ^2.3.4
+        version: 2.3.4
     devDependencies:
-      '@electron/remote':
-        specifier: ^2.1.2
-        version: 2.1.2(electron@25.9.8)
       clean-webpack-plugin:
         specifier: ^4.0.0
         version: 4.0.0(webpack@5.93.0(webpack-cli@5.1.4))
@@ -53,13 +50,8 @@ packages:
     resolution: {integrity: sha512-Qkzpg2s9GnVV2I2BjRksUi43U5e6+zaQMcjoJy0C+C5oxaKl+fmckGDQFtRpZpZV0NQekuZZ+tGz7EA9TVnQtQ==}
     engines: {node: '>=12'}
 
-  '@electron/remote@2.1.2':
-    resolution: {integrity: sha512-EPwNx+nhdrTBxyCqXt/pftoQg/ybtWDW3DUWHafejvnB1ZGGfMpv6e15D8KeempocjXe78T7WreyGGb3mlZxdA==}
-    peerDependencies:
-      electron: '>= 13.0.0'
-
-  '@jarboer/electron-prompt@1.8.0':
-    resolution: {integrity: sha512-JJooixbw0UROTtW6ykGHpU981ZohfsWsWqY5BHwjMjdT6NI1aLNGz2vpdY6bX6z5nVHw+3+Xv84S/FaJqUG/7w==}
+  '@jarboer/electron-prompt@2.3.4':
+    resolution: {integrity: sha512-qpV8Qn09DhLoVQWRb3rC4pdl5ErQLRGg48/URYXE6DpAjc7AVFR68JXhFUT6AVyxCSAsbwa99CVEmR1OQiHS/g==}
 
   '@jridgewell/gen-mapping@0.3.5':
     resolution: {integrity: sha512-IzL8ZoEDIBRWEzlCcRhOaCupYyN5gdIK+Q6fbFdPDg6HqX6jpkItn7DFIpW9LQzXG6Df9sA7+OKnq0qlz/GaQg==}
@@ -1204,11 +1196,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@electron/remote@2.1.2(electron@25.9.8)':
-    dependencies:
-      electron: 25.9.8
-
-  '@jarboer/electron-prompt@1.8.0': {}
+  '@jarboer/electron-prompt@2.3.4': {}
 
   '@jridgewell/gen-mapping@0.3.5':
     dependencies:

@@ -11,7 +11,8 @@ module.exports = [
   // Node
   {
     watch: false,
-    mode: 'development', //   mode: 'production',
+    mode: 'development',   
+    // mode: 'production',
     devtool: 'source-map', // TODO: Remove on publish
     target: 'node', // use require() & use NodeJs CommonJS style
     externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
@@ -47,7 +48,8 @@ module.exports = [
   // Web
   {
     watch: false,
-    mode: 'development', //   mode: 'production',
+    mode: 'development', 
+    //   mode: 'production',
     devtool: 'inline-source-map', // TODO: Remove on publish
     target: 'web', // use require() & use NodeJs CommonJS style
     // externals: [nodeExternals()], // in order to ignore all modules in node_modules folder

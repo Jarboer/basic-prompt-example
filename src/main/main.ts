@@ -4,16 +4,15 @@
  * To run the app enter the command: pnpm start
  */
 
-// TODO: Remove @electron/remote as a dependency? As it is from my prompt library
-
 // Modules to control application life and create native browser window
 import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 
 // Import the helper modules
 import NullTypeError from '../errors/null-type-error';
-// TODO: Change to dependency
-import { betterPrompt } from 'C://Users/jboersen/Developer/Node.js/electron-prompt'; // require('@jarboer/electron-prompt')
+// import { betterPrompt } from 'C://Users/<user-folder>/Developer/Node.js/electron-prompt';
+// TODO: See https://docs.npmjs.com/cli/v10/commands/npm-link instead of doing the above
+import { betterPrompt } from '@jarboer/electron-prompt';
 
 /**
  * Used to store the mainWindow object
@@ -110,10 +109,10 @@ ipcMain.on('select-style-btn-clicked', async (event, arg) => {
   // Prompt with a select element, make it a modal by passing in the window ref
   const result = await betterPrompt({
     title: 'Select an Option',
-    label: 'Please select an option',
+    subtitle: 'Please select an option',
     type: 'select',
-    resizable: true, // TODO: Remove?? For testing
-    devMode: true, // TODO: Remove?? For testing
+    // resizable: true, // For testing
+    // devMode: true, // For testing
     selectOptions: {
       '1': 'Option 1',
       '2': 'Option 2',
@@ -136,6 +135,52 @@ ipcMain.on('select-style-btn-clicked', async (event, arg) => {
   }
 });
 
+// This event is called when the login single button is clicked
+ipcMain.on('login-single-btn-clicked', async (event, arg) => {
+  console.log('Login single button pressed');
+
+  // Prompt with a select element, make it a modal by passing in the window ref
+  const result = await betterPrompt({
+    title: 'Save your Plex Credentials',
+    subtitle: 'Enter your account credentials',
+    type: 'login',
+    height: 450,
+    width: 600,
+    maximizable: true,
+    // resizable: true, // For testing
+    // devMode: true, // For testing
+    inputTextOptions: [
+      {
+        id: "username-field",
+        placeholder: "username.mva",
+        inputAttrs: {
+          type: "text",
+          required: true
+        }
+      },
+      {
+        id: "password-field",
+        placeholder: "••••••••",
+        inputAttrs: {
+          type: "password",
+          required: true
+        }
+      }
+    ],
+    buttonLabels: {
+      submit: "Save and Sign in"
+    }
+  }, isWindowNull(mainWindow));
+  
+  // Do something with the result...
+
+  // Display the result if it isn't null
+  if (result) {
+    console.log("Result 1:", result[0]);
+    console.log("Result 2:", result[1]);
+  }
+});
+
 /* ------------------- End of handlers for main-menu ------------------- */
 
 /**
@@ -155,32 +200,36 @@ export async function getLoginCredentials() {
   // Prompt for the user's username
   const username = await betterPrompt({
     title: 'Add Credentials',
-    label: 'Please enter your username',
-    placeholder: 'Username',
-    resizable: true, // TODO: Remove?? For testing
-    devMode: true, // TODO: Remove?? For testing
-    inputAttrs: {
-      type: 'text',
-      required: true,
-    },
+    subtitle: 'Please enter your username',
+    // resizable: true, // For testing
+    // devMode: true, // For testing
+    inputTextOptions: [{
+      placeholder: 'Username',
+      inputAttrs: {
+          type: 'text',
+          required: true,
+      },
+    }],
   });
 
   // Prompt for the user's password
   const password = await betterPrompt({
     title: 'Add Credentials',
-    label: 'Please enter your password',
-    placeholder: 'Password',
-    resizable: true, // TODO: Remove?? For testing
-    devMode: true, // TODO: Remove?? For testing
-    inputAttrs: {
-      type: 'password',
-      required: true,
-    },
+    subtitle: 'Please enter your password',
+    // resizable: true, // For testing
+    // devMode: true, // For testing
+    inputTextOptions: [{
+      placeholder: 'Password',
+      inputAttrs: {
+          type: 'password',
+          required: true,
+      },
+    }],
   });
 
   // Store the credentials in the result and convert the null vals to ""
-  result.username = username ?? '';
-  result.password = password ?? '';
+  result.username = (username as string | null) ?? '';
+  result.password = (password as string | null) ?? '';
 
   return result;
 }
